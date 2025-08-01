@@ -1,5 +1,3 @@
-# Force update for Render: Updater толугу менен жок
-
 import os
 import random
 from telegram import Update
