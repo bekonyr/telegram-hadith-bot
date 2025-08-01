@@ -1,7 +1,7 @@
 import os
 import random
 from telegram import Update
-from telegram.ext import Application, ApplicationBuilder, CommandHandler, ContextTypes
+from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -19,11 +19,11 @@ async def hadis(update: Update, context: ContextTypes.DEFAULT_TYPE):
     hadith = random.choice(hadiths)
     await update.message.reply_text(hadith)
 
-def main():
-    application: Application = ApplicationBuilder().token(os.getenv("BOT_TOKEN")).build()
-    application.add_handler(CommandHandler("start", start))
-    application.add_handler(CommandHandler("hadis", hadis))
-    application.run_polling()
+def run():
+    app = ApplicationBuilder().token(os.getenv("BOT_TOKEN")).build()
+    app.add_handler(CommandHandler("start", start))
+    app.add_handler(CommandHandler("hadis", hadis))
+    app.run_polling()
 
 if __name__ == "__main__":
-    main()
+    run()
