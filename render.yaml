@@ -2,9 +2,9 @@ services:
   - type: web
     name: telegram-hadith-bot
     env: python
-    plan: free
     buildCommand: ""
-    startCommand: "python main.py"
+    startCommand: python main.py
     envVars:
       - key: BOT_TOKEN
         sync: false
+
