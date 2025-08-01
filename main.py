@@ -1,7 +1,7 @@
 import os
 import random
 from telegram import Update
-from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
+from telegram.ext import Application, ApplicationBuilder, CommandHandler, ContextTypes
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -23,7 +23,7 @@ async def hadis(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(hadith)
 
 def main():
-    application = ApplicationBuilder().token(os.getenv("BOT_TOKEN")).build()
+    application: Application = ApplicationBuilder().token(os.getenv("BOT_TOKEN")).build()
     application.add_handler(CommandHandler("start", start))
     application.add_handler(CommandHandler("hadis", hadis))
     application.run_polling()
